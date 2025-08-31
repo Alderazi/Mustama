@@ -16,16 +16,17 @@ body {
 .card-container{
     display: grid;
     grid-template-columns: auto auto;
-    grid-template-rows: auto auto; 
-    gap: 15px 15px;
+    grid-template-rows: auto auto;
+    column-gap: 15px;
     text-align: center;
     align-items: center;
-    justify-content:space-evenly;
+    justify-content:center;
     
 }
 .card{
     width: 200px;
     height: 200px;
+    align-content: center;
 }
 .nav-wrapper{
 
@@ -38,4 +39,37 @@ body {
   font-size: 20px;
 font-family: Arial, Helvetica, sans-serif;
 font-weight: bold;
+}
+.card-index {
+    border: 2px solid black;
+    width: 100%;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+}
+
+.reciter-image img {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+.title {
+    margin-left: 20px;
+    font-size: 30px;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.play-audio {
+    width: 50px;
+    height: 50px;
+    margin-top: 10px;
+    cursor: pointer;
 }
