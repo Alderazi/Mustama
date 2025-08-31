@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block content %}
+<main>
+  <h1>Record List</h1>
+  
+  {% for record in records %}
+
+        <div class="card-index">
+            <div class="reciter-image">
+          {% load static %}
+            <img src="{% static record.reciterImage|cut:'main_app/static/' %}" width="100px" height="100px" alt="reciter Image">
+            </div>
+              <div class="title"> 
+                {{ record.surahName }} - {{ record.Reciter }}
+                 <div class="play-audio">
+                    <audio id="play">
+                        <source src="{% static record.audio|cut:'main_app/static/' %}">
+                     </audio>
+                         <img src="{% static 'uploads/pictures/play.png' %}" style="width: 50px; height: 50px;" alt="" id="play-image">
+                        </div>
+            </div>
+            <div>
+                {% if record.approval %}
+                <img src="{% static 'uploads/pictures/approved.svg' %}" style="width: 50px; height: 50px; margin:auto;" alt="">
+                {% else %}
+                <img src="{% static 'uploads/pictures/notApproved.png' %}" style="width: 50px; height: 50px; margin:auto;" alt="">
+                {% endif %}
+            </div>
+                    </div>
+  {% endfor %}
+    </main>
+    <script>
+document.querySelectorAll(".play-audio").forEach(playAudio => {
+    const play = playAudio.querySelector("#play");          
+    const playImage = playAudio.querySelector("#play-image");
+    let playSurah = false;
+
+    playAudio.addEventListener("click", () => {
+        playSurah = !playSurah;
+
+        if (playSurah) {
+            play.play();
+            playImage.src = "{% static 'uploads/pictures/pause.svg' %}";
+        } else {
+            play.pause();
+            playImage.src = "{% static 'uploads/pictures/play.png' %}";
+        }
+    });
+});
+
+    </script>
+        
+{% endblock %}
