@@ -2,8 +2,11 @@
 {% block content %}
 <main>
   <h1>Record List</h1>
+
+  <a href="{% url 'insert' %}" style="margin-left: 1400px ; margin-top:20px">insert Record</a>
   
   {% for record in records %}
+
 
         <div class="card-index">
             <div class="reciter-image">
