@@ -14,14 +14,19 @@
     <nav>
       <div class="nav-wrapper">
         <ul class= "right">
-          {% if user.is_authenticated  %}
+          {% if user.is_authenticated and not user.is_staff %}
           <li><a href="{% url 'home' %}">Home</a></li>
           <li><form action="{% url 'logout' %}" method="post">
             {% csrf_token %}
-            <button type="submit">Logout</button>
-           <li><form action="{% url 'logout' %}" method="post">
+            <button type="submit">Logout</button> 
+             {% elif user.is_authenticated and user.is_staff %}
+            <li><a href="{% url 'home' %}">approval</a></li>
+            <li><a href="{% url 'home' %}">create Record</a></li>
+            <li><a href="{% url 'index' %}">All Record</a></li>
+          <li><form action="{% url 'logout' %}" method="post">
             {% csrf_token %}
-            <button type="submit">Logout</button>          {% else %}
+            <button type="submit">Logout</button> 
+            {% else %}
           <li > <a href="{% url 'signup' %}">signup</a></li>
           <li><a href="{% url 'login' %}">Login</a></li>
           {% endif %}

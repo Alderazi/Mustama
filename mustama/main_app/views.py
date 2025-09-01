@@ -3,10 +3,19 @@ from django.views.generic.edit import CreateView,UpdateView,DeleteView
 from .models import Recitation
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 
 
 # Create your views here.
+class RecitationCreate(LoginRequiredMixin, CreateView):
+    model = Recitation
+    fields = ['surahName', 'Reciter', 'reciterImage', 'audio']
+    # success_url = '/record/myRecord/'
 
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
 
 def home(request):
     return render (request,'home.html')
@@ -17,24 +26,20 @@ def about(request):
 
 
 def record_index(request):
-    records=Recitation.objects.filter(approval=True)
+    records=Recitation.objects.filter(approval='APPROVED')
     return render(request,'record/index.html',{'records':records})
 
 
 def record_myRecord(request):
     records=Recitation.objects.filter(user=request.user)
     return render(request,'record/myRecord.html',{'records':records}) 
-class RecitationCreate(CreateView):
-    model=Recitation
-    fields=['surahName','Reciter','reciterImage','audio']
-    success_url='/record/myRecord/'
+
 def signup(request):
     error_message=""
     if request.method=='POST':
         form=UserCreationForm(request.POST)
         if form.is_valid():
-            user=form.save()
-            
+            user=form.save()          
             login(request,user)
             return redirect('index')
         else:
