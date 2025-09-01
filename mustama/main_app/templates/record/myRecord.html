@@ -23,13 +23,20 @@
                         </div>
             </div>
             <div>
-                {% if record.approval %}
+                {% if record.approval == "APPROVED" %}
+
                 <img src="{% static 'uploads/pictures/approved.svg' %}" style="width: 50px; height: 50px; margin:auto;" alt="">
-                {% else %}
+                
+                {% elif record.approval == "PENDING" %}
+
+                <img src="{% static 'uploads/pictures/Pending.png' %}" style="width: 50px; height: 50px; margin:auto;" alt="">
+
+                {% elif record.approval == "REJECTED" %}
                 <img src="{% static 'uploads/pictures/notApproved.png' %}" style="width: 50px; height: 50px; margin:auto;" alt="">
                 {% endif %}
             </div>
-                    </div>
+
+        </div>
   {% endfor %}
     </main>
     <script>

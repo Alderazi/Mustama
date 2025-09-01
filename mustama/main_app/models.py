@@ -11,5 +11,5 @@ class Recitation(models.Model):
     Reciter=models.CharField(max_length=100)
     reciterImage=models.ImageField(upload_to='main_app/static/uploads/pictures',default="main_app/static/uploads/pictures/default.jpeg")
     audio=models.FileField(upload_to='main_app/static/uploads/audio')
-    approval=models.CharField(choices=APPROVAL,default=APPROVAL[1][1])
+    approval=models.CharField(choices=APPROVAL,default=APPROVAL[1][0])
     user=models.ForeignKey(User,on_delete=models.CASCADE)
