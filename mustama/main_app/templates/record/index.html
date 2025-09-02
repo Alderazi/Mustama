@@ -24,8 +24,8 @@
       </div>
 
       {% if user.is_staff %}
-        <a href="">edit</a>
-        <a href="">delete</a>
+        <a href="{% url 'recordUpdate' record.id %}">edit</a>
+        <a href="{% ur %}">delete</a>
       {% endif %}
     </div>
   {% endfor %}

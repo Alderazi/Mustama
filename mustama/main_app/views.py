@@ -10,7 +10,7 @@ from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
-class RecitationCreate(LoginRequiredMixin, CreateView):
+class RecordCreate(LoginRequiredMixin, CreateView):
     model = Recitation
     fields = ['surahName', 'Reciter', 'reciterImage', 'audio']
     success_url = '/record/myRecord/'
@@ -18,7 +18,13 @@ class RecitationCreate(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
-
+class RecordUpdate(LoginRequiredMixin,UpdateView):
+    model=Recitation
+    fields=['surahName','Reciter','reciterImage',"audio"]
+    success_url = '/record/index/'
+class RecordDelete(LoginRequiredMixin,DeleteView):
+    model=Recitation
+    success_url='/record/index/'
 def home(request):
     return render (request,'home.html')
 

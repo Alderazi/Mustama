@@ -1,48 +1,44 @@
 {% extends 'base.html' %}
 {% block content %}
 <main>
-  <h1>Record List</h1>
+    <h1>Record List</h1>
 
-  <a href="{% url 'insert' %}" style="margin-left: 1400px ; margin-top:20px">insert Record</a>
+    <a href="{% url 'insert' %}" class="insert-btn">Insert Record</a>
   
-  {% for record in records %}
-
-
-        <div class="card-index">
+    {% for record in records %}
+    <div class="card-index">
+        <div class="card-left">
             <div class="reciter-image">
-          {% load static %}
-            <img src="{% static record.reciterImage|cut:'main_app/static/' %}" width="100px" height="100px" alt="reciter Image">
+                {% load static %}
+                <img src="{% static record.reciterImage|cut:'main_app/static/' %}" alt="reciter Image">
             </div>
-              <div class="title"> 
+            <div class="title">
                 {{ record.surahName }} - {{ record.Reciter }}
-                 <div class="play-audio">
+                <div class="play-audio">
                     <audio id="play-{{ forloop.counter0 }}">
                         <source src="{% static record.audio|cut:'main_app/static/' %}">
-                     </audio>
-                         <img src="{% static 'uploads/pictures/play.png' %}"
-                         style="width: 50px; height: 50px;"
-                         alt=""             
+                    </audio>
+                    <img src="{% static 'uploads/pictures/play.png' %}"
+                         alt=""
                          id="play-image-{{ forloop.counter0 }}"  
-                        data-index="{{ forloop.counter0 }}">
-                        </div>
+                         data-index="{{ forloop.counter0 }}">
+                </div>
             </div>
-            <div>
-                {% if record.approval == "APPROVED" %}
-
-                <img src="{% static 'uploads/pictures/approved.svg' %}" style="width: 50px; height: 50px; margin:auto;" alt="">
-                
-                {% elif record.approval == "PENDING" %}
-
-                <img src="{% static 'uploads/pictures/Pending.png' %}" style="width: 50px; height: 50px; margin:auto;" alt="">
-
-                {% elif record.approval == "REJECTED" %}
-                <img src="{% static 'uploads/pictures/notApproved.png' %}" style="width: 50px; height: 50px; margin:auto;" alt="">
-                {% endif %}
-            </div>
-
         </div>
-  {% endfor %}
-    </main>
+
+        <div class="card-right">
+            {% if record.approval == "APPROVED" %}
+            <img src="{% static 'uploads/pictures/approved.svg' %}" alt="">
+            {% elif record.approval == "PENDING" %}
+            <img src="{% static 'uploads/pictures/Pending.png' %}" alt="">
+            {% elif record.approval == "REJECTED" %}
+            <img src="{% static 'uploads/pictures/notApproved.png' %}" alt="">
+            {% endif %}
+        </div>
+    </div>
+    {% endfor %}
+</main>
+
 <script>
 let playedAudio = false;
 let index = -1;
@@ -67,7 +63,7 @@ document.querySelectorAll(".play-audio").forEach(playAudio => {
             playNewSurah(selectedIndex, index);
         }
     }
-
+    //play surah if there is no surah are played
     const playThisSurah = (position) => {
         const audio = document.querySelector(`#play-${position}`);
         const image = document.querySelector(`#play-image-${position}`);
@@ -76,8 +72,16 @@ document.querySelectorAll(".play-audio").forEach(playAudio => {
         playedAudio = true;
         audio.play();
         image.src = "{% static 'uploads/pictures/pause.svg' %}";
-    }
 
+        // Reset icon when audio ends
+        audio.onended = () => {
+            playedAudio = false;
+            image.src = "{% static 'uploads/pictures/play.png' %}";
+            selectedIndex = -1;
+            index = -1;
+        };
+    }
+    // pause the surah that are clicked twice
     const pauseThisSurah = () => {
         const audio = document.querySelector(`#play-${selectedIndex}`);
         const image = document.querySelector(`#play-image-${selectedIndex}`);
@@ -86,7 +90,7 @@ document.querySelectorAll(".play-audio").forEach(playAudio => {
         audio.pause();
         image.src = "{% static 'uploads/pictures/play.png' %}";
     }
-
+    // change the surah to another and pause the prevoius record
     const playNewSurah = (oldValue, newValue) => {
         if (oldValue !== -1) {
             const oldAudio = document.querySelector(`#play-${oldValue}`);
@@ -100,5 +104,4 @@ document.querySelectorAll(".play-audio").forEach(playAudio => {
     playAudio.addEventListener("click", playSurah);
 });
 </script>
-        
 {% endblock %}

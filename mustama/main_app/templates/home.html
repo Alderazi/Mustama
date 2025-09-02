@@ -1,23 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
 <main class="card-container">
-<div class="card">
-                Quarn
-            </div>
-            <a href="{% url 'index' %}">
-            <div class="card">
-                All Records
-            </div>
-            </a>
-            <a href="{% url 'myRecord' %}">
-                <div class="card">
-                    My records
-                </div>
-        </a>
-            <a href="{% url 'about' %}">
-            <div class="card">
-                About
-        </div>
-        </a>
-        </main>
+    <div class="card">Quran</div>
+    <a href="{% url 'index' %}"><div class="card">All Records</div></a>
+    <a href="{% url 'myRecord' %}"><div class="card">My Records</div></a>
+    <a href="{% url 'about' %}"><div class="card">About</div></a>
+</main>
+
 {% endblock %}
