@@ -22,7 +22,7 @@
             </form></li>
              {% elif user.is_authenticated and user.is_staff %}
             <li><a href="{% url 'approval' %}">approval</a></li>
-            <li><a href="{% url 'home' %}">create Record</a></li>
+            <li><a href="{% url 'insert' %}">create Record</a></li>
             <li><a href="{% url 'index' %}">All Record</a></li>
           <li><form action="{% url 'logout' %}" method="post">
             {% csrf_token %}

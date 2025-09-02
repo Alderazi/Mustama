@@ -17,6 +17,8 @@ class RecordCreate(LoginRequiredMixin, CreateView):
 
     def form_valid(self, form):
         form.instance.user = self.request.user
+        if(self.request.user.is_staff):
+            form.instance.approval="APPROVED"
         return super().form_valid(form)
 class RecordUpdate(LoginRequiredMixin,UpdateView):
     model=Recitation
