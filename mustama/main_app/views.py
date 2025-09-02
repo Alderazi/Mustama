@@ -89,5 +89,18 @@ def reject(request,record_id):
     else:
         return redirect('home')
 def info(request):
-    records=Recitation.objects.filter(approval='APPROVED')
-    return render(request,'app/info.html',{'records':records} )
+    records = Recitation.objects.filter(approval='APPROVED')
+    unique_records = checkDuplicated(records)
+    return render(request, 'app/info.html', {'records': unique_records})
+
+def checkDuplicated(records):
+    uniqueValues = []
+    for i in records:
+        duplicatedFlag = False
+        for j in uniqueValues:
+            if i.Reciter == j.Reciter:
+                duplicatedFlag = True
+                break
+        if not duplicatedFlag:
+            uniqueValues.append(i)
+    return uniqueValues

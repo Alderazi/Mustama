@@ -24,6 +24,7 @@
             <li><a href="{% url 'approval' %}">approval</a></li>
             <li><a href="{% url 'insert' %}">create Record</a></li>
             <li><a href="{% url 'index' %}">All Record</a></li>
+            <li><a href="{% url 'info' %}">Reciter information</a></li>
           <li><form action="{% url 'logout' %}" method="post">
             {% csrf_token %}
             <button type="submit">Logout</button> 

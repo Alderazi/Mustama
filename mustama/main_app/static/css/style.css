@@ -284,3 +284,95 @@ h1 {
     color: #2c3e50;
     margin: 0;
 }
+.approval-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    margin-left: 20px;
+}
+.status-icon {
+    width: 45px;
+    height: 45px;
+}
+.action-icon {
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+    transition: transform 0.2s, opacity 0.2s;
+}
+
+.action-icon:hover {
+    transform: scale(1.1);
+    opacity: 0.8;
+}
+
+/* Improve card-index layout */
+.card-index {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 800px;
+    min-height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    margin: 15px auto;
+    box-sizing: border-box;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card-index:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+}
+
+.reciter-image img {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border: 3px solid #2ecc71;
+}
+
+.title h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #2ecc71;
+    margin: 0 0 10px 0;
+}
+
+.title p {
+    font-size: 14px;
+    color: #2c3e50;
+    margin: 5px 0 0 0;
+}
+
+.play-audio img {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    transition: transform 0.2s;
+}
+
+.play-audio img:hover {
+    transform: scale(1.1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .card-index {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .approval-section {
+        flex-direction: row;
+        justify-content: center;
+        margin-top: 15px;
+    }
+}

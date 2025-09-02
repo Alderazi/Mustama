@@ -6,45 +6,44 @@
   
   {% for record in records %}
 
+<div class="card-index">
+  <!-- Reciter Image -->
+  <div class="reciter-image">
+    {% load static %}
+    <img src="{% static record.reciterImage|cut:'main_app/static/' %}" alt="reciter Image">
+  </div>
 
-        <div class="card-index">
-            <div class="reciter-image">
-          {% load static %}
-            <img src="{% static record.reciterImage|cut:'main_app/static/' %}" width="100px" height="100px" alt="reciter Image">
-            </div>
-              <div class="title"> 
-                {{ record.surahName }} - {{ record.Reciter }}
-                 <div class="play-audio">
-                    <audio id="play-{{ forloop.counter0 }}">
-                        <source src="{% static record.audio|cut:'main_app/static/' %}">
-                     </audio>
-                         <img src="{% static 'uploads/pictures/play.png' %}"
-                          style="width: 50px; height: 50px;" 
-                          alt=""
-                         id="play-image-{{ forloop.counter0 }}"  
-                         data-index="{{ forloop.counter0 }}">
-                        </div>
-            </div>
-            <div>
+  <!-- Reciter Info -->
+  <div class="title"> 
+    <h2>{{ record.surahName }} - {{ record.Reciter }}</h2>
+    <div class="play-audio">
+      <audio id="play-{{ forloop.counter0 }}">
+        <source src="{% static record.audio|cut:'main_app/static/' %}">
+      </audio>
+      <img src="{% static 'uploads/pictures/play.png' %}" 
+           alt="Play"
+           id="play-image-{{ forloop.counter0 }}"  
+           data-index="{{ forloop.counter0 }}">
+    </div>
+    <p><strong>Description:</strong> {{ record.description }}</p>
+  </div>
 
-                {% if record.approval == "PENDING" %}
+  <!-- Approval Section -->
+  <div class="approval-section">
+    {% if record.approval == "PENDING" %}
+      <img src="{% static 'uploads/pictures/Pending.png' %}" alt="Pending" class="status-icon">
+    {% endif %}
 
-                <img src="{% static 'uploads/pictures/Pending.png' %}" style="width: 50px; height: 50px; margin-left:100px;" alt="">
+    <a href="{% url 'approve' record.id %}">
+      <img src="{% static 'uploads/pictures/approved.svg' %}" alt="Approve" class="action-icon">
+    </a>
 
-                {% endif %}
-            </div>
-            <div>
-                <a href="{% url 'approve' record.id %}">
-                <img src="{% static 'uploads/pictures/approved.svg' %}" style="width: 50px; height: 50px; margin-left:500px;"  alt="">
-                </a>
-            </div>
-              <div>
-                <a href="{% url 'reject' record.id %}">
-                <img src="{% static 'uploads/pictures/notApproved.png' %}" style="width: 50px; height: 50px; margin-left:all;" alt="">
-                </a>
-            </div>
+    <a href="{% url 'reject' record.id %}">
+      <img src="{% static 'uploads/pictures/notApproved.png' %}" alt="Reject" class="action-icon">
+    </a>
+  </div>
+</div>
 
-        </div>
   {% endfor %}
     </main>
    <script>

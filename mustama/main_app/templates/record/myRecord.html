@@ -22,8 +22,10 @@
                          alt=""
                          id="play-image-{{ forloop.counter0 }}"  
                          data-index="{{ forloop.counter0 }}">
-                </div>
-            </div>
+                        </div>
+                        <p>description:</p>
+                <p>{{ record.description }}</p>
+                    </div>
         </div>
 
         <div class="card-right">
@@ -35,6 +37,7 @@
             <img src="{% static 'uploads/pictures/notApproved.png' %}" alt="">
             {% endif %}
         </div>
+
     </div>
     {% endfor %}
 </main>

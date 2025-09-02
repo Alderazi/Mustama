@@ -7,17 +7,19 @@
     <div class="card-index">
       <div class="reciter-image">
         {% load static %}
+        {% %}
         <img src="{% static record.reciterImage|cut:'main_app/static/' %}" width="100px" height="100px" alt="reciter Image">
       </div>
       <div class="title"> 
         <h1>{{ record.Reciter }}</h1>
         <p>{{ record.description }}</p>
 
-      {% if user.is_staff %}
+
+    </div>
+          {% if user.is_staff %}
         <a href="{% url 'recordUpdate' record.id %}">edit</a>
         <a href="{% url 'recordDelete' record.id  %}">delete</a>
       {% endif %}
-    </div>
     </div>
   {% endfor %}
 </main>
