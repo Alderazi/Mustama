@@ -13,4 +13,5 @@ urlpatterns = [
     path('adminPage/approval/<int:record_id>/reject/',views.reject,name='reject'),
     path('record/index/<int:pk>/update/',views.RecordUpdate.as_view(),name='recordUpdate'),
     path('record/index/<int:pk>/delete/',views.RecordDelete.as_view(),name='recordDelete'),    
+    path('app/info/',views.info,name='info')
 ]
