@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mustama</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</head>
+<body>
+  <header class="navbar-fixed">
+    <nav>
+      <div class="nav-wrapper">
+        <ul class= "right">
+          {% if user.is_authenticated and not user.is_staff %}
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li><form action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
+            <button type="submit">Logout</button> 
+            </form></li>
+             {% elif user.is_authenticated and user.is_staff %}
+            <li><a href="{% url 'approval' %}">approval</a></li>
+            <li><a href="{% url 'insert' %}">create Record</a></li>
+            <li><a href="{% url 'index' %}">All Record</a></li>
+            <li><a href="{% url 'info' %}">Reciter information</a></li>
+          <li><form action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
+            <button type="submit">Logout</button> 
+            </form></li>
+            {% else %}
+          <li > <a href="{% url 'signup' %}">signup</a></li>
+          <li><a href="{% url 'login' %}">Login</a></li>
+          {% endif %}
+
+</ul>
+          </div>
+    </nav>
+</header>
+{% block content %}
+{% endblock %}
+  <footer class="page-footer">
+    <div class="right">All Rights Reserved, &copy; 2025 Mustama &nbsp;</div>
+  </footer>
+  
+</body>
+</html>

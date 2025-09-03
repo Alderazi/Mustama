@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<main>
+  {% if object %}
+  <h2>Update Record</h2>
+  {% else %}
+  <h1>Add Record</h1>
+{% endif %}
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Submit</button>
+  </form>
+</main>
+{% endblock %}
