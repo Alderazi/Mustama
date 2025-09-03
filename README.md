@@ -47,3 +47,7 @@ The most enjoyable part of development was working on:
 - Upload and share your own recitations  
 - Clean and structured framework  
 - Focus on user permissions and secure access  
+## Resources that help me
+[django](https://www.djangoproject.com/)
+
+[w3school](https://www.w3schools.com/)
