@@ -33,7 +33,6 @@ h1 {
     font-weight: bold;
 }
 
-/* ========== CARD CONTAINER (GRID) ========== */
 .card-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -48,7 +47,6 @@ h1 {
     text-decoration: none;
 }
 
-/* ========== GENERIC SMALL CARD ========== */
 .card {
     background-color: #fff;
     border: 2px solid #000;
@@ -72,7 +70,6 @@ h1 {
     box-shadow: 0 6px 12px rgba(0,0,0,0.15);
 }
 
-/* ========== MAIN RECITER CARD (INDEX) ========== */
 .card-index {
     background-color: #fff;
     border: 1px solid #ddd;
@@ -95,7 +92,6 @@ h1 {
     box-shadow: 0 8px 16px rgba(0,0,0,0.15);
 }
 
-/* Image section */
 .reciter-image {
     flex-shrink: 0;
 }
@@ -108,7 +104,6 @@ h1 {
     border: 3px solid #2ecc71;
 }
 
-/* Text + Actions section */
 .title {
     margin-left: 25px;
     font-size: 20px;
@@ -119,7 +114,6 @@ h1 {
     flex: 1;
 }
 
-/* Admin action links styled as buttons */
 .card-index a {
     margin-top: 10px;
     display: inline-block;
@@ -150,7 +144,6 @@ h1 {
     background-color: #c0392b;
 }
 
-/* ========== PLAY AUDIO BUTTON ========== */
 .play-audio {
     width: 40px;
     height: 40px;
@@ -182,7 +175,6 @@ h1 {
     margin: auto;
 }
 
-/* ========== INSERT BUTTON ========== */
 .insert-btn {
     display: inline-block;
     margin: 0 0 20px auto;
@@ -199,7 +191,6 @@ h1 {
     background-color: #27ae60;
 }
 
-/* ========== RESPONSIVE DESIGN ========== */
 @media (max-width: 768px) {
     .card-container {
         grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -250,7 +241,6 @@ h1 {
     }
 }
 
-/* ========== NAVBAR BUTTONS ========== */
 .nav-wrapper form button {
     background-color: #e74c3c;
     color: #fff;
@@ -274,8 +264,8 @@ h1 {
 .title h1 {
     font-size: 22px;
     font-weight: 700;
-    color: #2ecc71;   /* green highlight to match theme */
-    margin: 0 0 8px 0; /* spacing below the name */
+    color: #2ecc71;   
+    margin: 0 0 8px 0; 
     line-height: 1.2;
 }
 
@@ -307,7 +297,6 @@ h1 {
     opacity: 0.8;
 }
 
-/* Improve card-index layout */
 .card-index {
     background-color: #fff;
     border: 1px solid #ddd;
@@ -363,7 +352,6 @@ h1 {
     transform: scale(1.1);
 }
 
-/* Responsive */
 @media (max-width: 768px) {
     .card-index {
         flex-direction: column;
@@ -375,4 +363,15 @@ h1 {
         justify-content: center;
         margin-top: 15px;
     }
+}
+
+
+.btn-submit {
+  background: linear-gradient(90deg, #2ecc71);
+  border: none;
+  padding: 12px 20px;
+  color: white;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
 }
