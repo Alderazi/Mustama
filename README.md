@@ -4,8 +4,7 @@
 
 **Mustama** is a web application that allows users to **listen to their favorite Quran reciters** and also **upload their own recitations** to share with the community.  
 
-The platform is designed to provide an easy-to-use interface for both listening and contributing recitations, while also ensuring proper **authorization and permissions** for secure access.  
-
+The platform is designed to provide an easy-to-use interface for both listening and contributing recitations, while also ensuring proper **authorization and permissions** for secure access. click this [link](https://mustama-app-0c3b143b72a0.herokuapp.com/accounts/login/?next=/record/myRecord/) for deployed version  
 ---  
 
 ## 📋 Table of Contents  
